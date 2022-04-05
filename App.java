@@ -51,7 +51,7 @@ public class App {
                     }
                     //Funcionalidade 3
 
-                    //Funcionalidade 4
+                    //Funcionalidade 4 - to do
                     else if(comando == 4){
                         System.out.print("Enviar mensagem para: ");
                         funcionalidade.PessoaMensagem();
@@ -110,25 +110,48 @@ public class App {
                     else if(comando == 6){
                         System.out.print("Insira a comunidade que voce quer entrar: ");
                         funcionalidade.EntrarComunidade();
+                        System.out.print("Insira seu usuario: ");
+                        funcionalidade.Add_Usuario_Comunidade();
 
                         if(funcionalidade.nome_comunidade == funcionalidade.entrar_comunidade){
                             System.out.printf("Voce entrou na comunidade: %s\n", funcionalidade.nome_comunidade);
+                            list_comunidade.add(funcionalidade.usuario_comunidade);
                         }
                         comando = teclado.nextInt();
                     }
 
-                    //Funcionalidade 7
+                    //Funcionalidade 7 - falta amizades e mensagens
                     else if(comando == 7){
                         System.out.print("Insira o usuario que voce quer ver: ");
                         funcionalidade.Pesquisa();
 
                         if(list_login.contains(funcionalidade.pesquisa)){
-                            System.out.println(funcionalidade.pesquisa);
+                            System.out.println("Login: " + funcionalidade.pesquisa);
                             int i = list_login.indexOf(funcionalidade.pesquisa);
-                            //System.out.println(list_nomes[i]);
+                            System.out.println("Nome: " + list_nomes.get(i));
+                            if(list_comunidade.contains(funcionalidade.pesquisa)){
+                                System.out.println("Eh membro da comunidade " + funcionalidade.nome_comunidade);
+                            }
                         }
                         comando = teclado.nextInt();
                     }
+
+                    //Funcionalidade 8 - falta amizades e mensagens
+                    else if(comando == 8){
+                        System.out.print("Insira seu nome de usuario para deletar: ");
+                        funcionalidade.Deletar();
+                        if(list_login.contains(funcionalidade.deletar)){
+                            list_login.remove(funcionalidade.deletar);
+                            int j = list_login.indexOf(funcionalidade.deletar);
+                            list_nomes.remove(j);
+                            list_senha.remove(j);
+                            if(list_comunidade.contains(funcionalidade.deletar)){
+                                list_nomes.remove(funcionalidade.deletar);
+                            }
+                        }
+                        System.out.println("Usuario removido");
+                    }
+
                 }
         }   
     }
