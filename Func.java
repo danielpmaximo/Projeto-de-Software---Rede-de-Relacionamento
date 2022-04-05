@@ -17,6 +17,7 @@ public class Func {
     //int cmd_comunidade;
     String entrar_comunidade;
     String pesquisa;
+    String deletar;
 
     // Funcionalidade 1
     public void Nome(){
@@ -68,6 +69,11 @@ public class Func {
     //Funcionalidade 7
     public void Pesquisa(){
         pesquisa = scan.nextLine();
+    }
+
+    //Funcionalidade 8
+    public void Deletar(){
+        deletar = scan.nextLine();
     }
 
 }
