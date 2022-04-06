@@ -5,6 +5,8 @@ public class IFace {
         try (Scanner teclado = new Scanner(System.in)) {
             Func funcionalidade = new Func();//objeto
             Mensagem msg = new Mensagem();
+            Menu menu = new Menu();
+            menu.CriarMenu();
             int comando = teclado.nextInt();
             int cmd_comunidade;
             ArrayList<String> list_nomes = new ArrayList<String>();
@@ -32,6 +34,7 @@ public class IFace {
                         list_senha.add(funcionalidade.senha);
 
                         System.out.println("Conta criada com sucesso!");
+                        menu.CriarMenu();
                         comando = teclado.nextInt();
                     }
                     //Funcionalidade 2
@@ -54,6 +57,8 @@ public class IFace {
                         else{
                             System.out.print("Insira um usuario valido\nInsira outro numero\n");
                         }
+                    
+                    menu.CriarMenu();
                     comando = teclado.nextInt();
                     }
                     //Funcionalidade 3 - to do
@@ -69,10 +74,12 @@ public class IFace {
                             System.out.printf("Envie sua mensagem para %s:\n", msg.loginDestinatario);
                             funcionalidade.Mensagem();
                             list_mensagens.add(msg.mensagem);
+                            System.out.print("Mensagem enviada com sucesso!\n");
                         }
                         else{
                             System.out.print("Insira um usuario valido\nInsira outro numero\n");
                         }
+                        menu.CriarMenu();
                         comando = teclado.nextInt();
                     }
 
@@ -112,7 +119,7 @@ public class IFace {
                                 cmd_comunidade = teclado.nextInt();
                             }
                         }
-
+                        menu.CriarMenu();
                         comando = teclado.nextInt();
                     }
 
@@ -127,6 +134,7 @@ public class IFace {
                             System.out.printf("Voce entrou na comunidade: %s\n", funcionalidade.nome_comunidade);
                             list_comunidade.add(funcionalidade.usuario_comunidade);
                         }
+                        menu.CriarMenu();
                         comando = teclado.nextInt();
                     }
 
@@ -143,6 +151,7 @@ public class IFace {
                                 System.out.println("Eh membro da comunidade " + funcionalidade.nome_comunidade);
                             }
                         }
+                        menu.CriarMenu();
                         comando = teclado.nextInt();
                     }
 
@@ -156,13 +165,15 @@ public class IFace {
                             list_nomes.remove(j);
                             list_senha.remove(j);
                             if(list_comunidade.contains(funcionalidade.deletar)){
-                                list_nomes.remove(funcionalidade.deletar);
+                                list_comunidade.remove(funcionalidade.deletar);
                             }
                         }
                         System.out.println("Usuario removido");
+                        menu.CriarMenu();
+                        comando = teclado.nextInt();
                     }
 
-                    //Funcionalidade 9
+                    //Funcionalidade 9 - falta mostrar todas as mensagens do feed
                     else if(comando == 9){
                         System.out.print("Faca seu login, digite seu nome de usuario: ");
                         funcionalidade.LoginFeed();
@@ -177,7 +188,11 @@ public class IFace {
                                 }
                             }
                         }
+                        menu.CriarMenu();
+                        comando = teclado.nextInt();
                     }
+
+                    //Funcionalidade 10 - to do
 
                 }
         }   
