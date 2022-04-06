@@ -14,15 +14,15 @@ public class Func {
     String assunto_comunidade;
     String usuario_comunidade;
     String rm_usuario_comunidade;
-    //int cmd_comunidade;
     String entrar_comunidade;
     String pesquisa;
     String deletar;
+    String login_feed;
+    String feed;
 
     // Funcionalidade 1
     public void Nome(){
-        nome = scan.nextLine();
-        
+        nome = scan.nextLine();    
     }
     public void Login(){
         login = scan.nextLine();
@@ -74,6 +74,16 @@ public class Func {
     //Funcionalidade 8
     public void Deletar(){
         deletar = scan.nextLine();
+    }
+
+    //Funcionalidade 8
+    public void LoginFeed(){
+        login_feed = scan.nextLine();
+    }
+    public void Feed(){
+        feed = scan.nextLine();
+    }
+    public void MensagemDestinatario() {
     }
 
 }
