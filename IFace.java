@@ -1,9 +1,10 @@
 import java.util.*;
 
-public class App {
+public class IFace {
     public static void main(String[] args){
         try (Scanner teclado = new Scanner(System.in)) {
-            Func funcionalidade = new Func(); //objeto
+            Func funcionalidade = new Func();//objeto
+            Mensagem msg = new Mensagem();
             int comando = teclado.nextInt();
             int cmd_comunidade;
             ArrayList<String> list_nomes = new ArrayList<String>();
@@ -11,6 +12,9 @@ public class App {
             ArrayList<String> list_senha = new ArrayList<String>();
             ArrayList<String> list_comunidade = new ArrayList<String>();
             ArrayList<String> list_mensagens = new ArrayList<String>();
+            ArrayList<String> list_mensagens_feed = new ArrayList<String>();
+            ArrayList<Integer> list_qtd_msg_feed = new ArrayList<Integer>();
+            ArrayList<Mensagem> list_direct_mensagens = new ArrayList<Mensagem>();
 
                 // Funcionalidade 1
                 while(comando != 0){
@@ -18,12 +22,15 @@ public class App {
                         System.out.print("Nome: ");
                         funcionalidade.Nome();
                         list_nomes.add(funcionalidade.nome);
-                        System.out.print("Login: ");
+
+                        System.out.print("Usuario: ");
                         funcionalidade.Login();
                         list_login.add(funcionalidade.login);
+
                         System.out.print("Senha: ");
                         funcionalidade.Senha();
                         list_senha.add(funcionalidade.senha);
+
                         System.out.println("Conta criada com sucesso!");
                         comando = teclado.nextInt();
                     }
@@ -49,23 +56,26 @@ public class App {
                         }
                     comando = teclado.nextInt();
                     }
-                    //Funcionalidade 3
+                    //Funcionalidade 3 - to do
 
                     //Funcionalidade 4 - to do
                     else if(comando == 4){
                         System.out.print("Enviar mensagem para: ");
-                        funcionalidade.PessoaMensagem();
+                        msg.MensagemDestinatario();
+                        System.out.print("Digite seu usuario: ");
+                        msg.MensagemRemetente();
 
-                        if(list_login.contains(funcionalidade.pessoa_mensagem)){
-                            System.out.printf("Envie sua mensagem para %s:\n", funcionalidade.pessoa_mensagem);
+                        if(list_login.contains(msg.loginDestinatario)){
+                            System.out.printf("Envie sua mensagem para %s:\n", msg.loginDestinatario);
                             funcionalidade.Mensagem();
-                            list_mensagens.add(funcionalidade.mensagem);
+                            list_mensagens.add(msg.mensagem);
                         }
                         else{
                             System.out.print("Insira um usuario valido\nInsira outro numero\n");
                         }
                         comando = teclado.nextInt();
                     }
+
                     //Funcionalidade 5
                     else if(comando == 5){
                         if(funcionalidade.nome_comunidade == null){
@@ -150,6 +160,23 @@ public class App {
                             }
                         }
                         System.out.println("Usuario removido");
+                    }
+
+                    //Funcionalidade 9
+                    else if(comando == 9){
+                        System.out.print("Faca seu login, digite seu nome de usuario: ");
+                        funcionalidade.LoginFeed();
+                        
+                        if(list_login.contains(funcionalidade.login_feed)){
+                            System.out.print("Digite 1 para escrever sua mensagem ou digite 0 para voltar: ");
+                            int cmd_feed = teclado.nextInt();
+                            while(cmd_feed != 0){
+                                if(cmd_feed == 1){
+                                    funcionalidade.Feed();
+                                    list_mensagens_feed.add(funcionalidade.feed);
+                                }
+                            }
+                        }
                     }
 
                 }
