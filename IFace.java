@@ -185,6 +185,7 @@ public class IFace {
                                 if(cmd_feed == 1){
                                     funcionalidade.Feed();
                                     list_mensagens_feed.add(funcionalidade.feed);
+                                    break;
                                 }
                             }
                         }
